@@ -5,45 +5,6 @@ const About = () => {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // 模拟API调用 (实际项目中应该调用后端API)
-  const mockApiCall = async (userInput: string) => {
-    setIsLoading(true);
-
-    // 这里是模拟响应，实际项目中应该替换为真实的API调用
-    const mockResponse = {
-      choices: [{
-        message: {
-          content: `基于您的症状描述"${userInput}"，可能的诊断建议：
-          
-1. 可能疾病：
-- 干眼症 (可能性较高)
-- 结膜炎 (可能性中等)
-- 视疲劳 (可能性中等)
-
-2. 建议治疗：
-- 人工泪液 (如玻璃酸钠滴眼液)，每日3-4次
-- 抗生素滴眼液 (如左氧氟沙星滴眼液)，每日3次 (如确认细菌感染)
-- 非甾体抗炎滴眼液 (如普拉洛芬滴眼液)
-
-3. 护眼建议：
-- 每小时休息5分钟
-- 保持屏幕距离50cm以上
-- 多眨眼保持湿润
-
-4. 警示症状：
-如出现剧烈眼痛、视力骤降请立即就医
-
-本建议仅供参考，请以专业医生诊断为准`
-        }
-      }]
-    };
-
-    await new Promise(resolve => setTimeout(resolve, 1000)); // 模拟网络延迟
-
-    setIsLoading(false);
-    return mockResponse;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -61,12 +22,22 @@ const About = () => {
     const updatedConversation = [...conversation, { role: 'user', content: input }];
     setConversation(updatedConversation);
     setInput('');
+    setIsLoading(true);
 
-    // 构建专业医学提示词
-    const messages = [
-      {
-        role: 'system',
-        content: `你是一名专业眼科医生助手，请用通俗语言回答：
+    try {
+      // 直接调用 OpenAI API
+      const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer sk-1f01993e12054856a15114d4861bacfe'
+        },
+        body: JSON.stringify({
+          model: "deepseek-chat",
+          messages: [
+            {
+              role: "system",
+              content: `你是一名专业眼科医生助手，请用通俗语言回答：
 1. 可能疾病（按可能性排序）
 2. 建议治疗方式（含常用药物通用名）
 3. 日常护眼建议
@@ -76,26 +47,33 @@ const About = () => {
 - 药物需注明成人用量
 - 标注'请及时就医'的严重情况
 - 最后注明'本建议仅供参考'`
-      },
-      { role: 'user', content: input }
-    ];
+            },
+            { role: "user", content: input }
+          ],
+          temperature: 0.3,
+          max_tokens: 500
+        })
+      });
 
-    try {
-      // 实际项目中应该调用真实API
-      // const response = await client.chat.completions.create({
-      //   model: "deepseek-chat",
-      //   messages,
-      //   temperature: 0.3,
-      //   max_tokens: 500
-      // });
+      if (!response.ok) {
+        throw new Error(`API请求失败: ${response.status}`);
+      }
 
-      const response = await mockApiCall(input);
-      const assistantResponse = response.choices[0].message.content;
+      const data = await response.json();
+      const assistantResponse = data.choices[0].message.content;
 
-      setConversation([...updatedConversation, { role: 'assistant', content: assistantResponse }]);
+      setConversation([...updatedConversation, {
+        role: 'assistant',
+        content: assistantResponse
+      }]);
     } catch (error) {
       console.error('API调用失败:', error);
-      setConversation([...updatedConversation, { role: 'assistant', content: '抱歉，获取诊断建议时出错，请稍后再试。' }]);
+      setConversation([...updatedConversation, {
+        role: 'assistant',
+        content: '抱歉，获取诊断建议时出错，请稍后再试。'
+      }]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
