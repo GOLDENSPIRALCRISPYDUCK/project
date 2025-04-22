@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Eye className="h-8 w-8 text-blue-600" />
+              <Leaf className="h-8 w-8 text-blue-600" />
               <span className="text-xl font-bold text-gray-800">岐黄御瘟</span>
             </Link>
           </div>
