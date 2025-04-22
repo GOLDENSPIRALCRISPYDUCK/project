@@ -46,82 +46,10 @@ const knowledgeData = [
       '沙参麦冬汤：沙参、玉竹、生甘草、冬桑叶、麦冬、生扁豆、花粉'
     ],
     prevention: '避免劳累；饮食清淡易消化；可适量食用百合、银耳等滋阴食物'
-  },
-    {
-    id: 5,
-    title: '暑湿感冒',
-    category: '感冒类型',
-    content: '多发于夏季，因感受暑湿邪气所致，主要症状为发热、汗出不畅、头身困重、胸闷恶心、食欲不振、舌苔黄腻。治疗以清暑祛湿解表为主。',
-    treatments: [
-      '新加香薷饮：香薷、厚朴、扁豆花、金银花、连翘',
-      '藿香正气散：藿香、紫苏、白芷、大腹皮、茯苓、白术、陈皮、半夏、厚朴、桔梗、甘草'
-    ],
-    prevention: '夏季避免贪凉饮冷；保持环境干燥通风；适量饮用藿香、佩兰等芳香化湿之品'
-  },
-  {
-    id: 6,
-    title: '气虚感冒',
-    category: '感冒类型',
-    content: '多见于体虚者，症状为反复感冒、恶寒发热、头痛鼻塞、咳嗽痰白、气短乏力、舌淡苔白。治疗以益气解表为主。',
-    treatments: [
-      '参苏饮：人参、紫苏叶、葛根、前胡、半夏、茯苓、陈皮、甘草、桔梗、枳壳、木香',
-      '玉屏风散合桂枝汤：黄芪、白术、防风、桂枝、白芍、生姜、大枣、甘草'
-    ],
-    prevention: '平时可服用玉屏风散增强卫气；适当锻炼如太极拳、八段锦；避免过度劳累'
-  },
-  {
-    id: 7,
-    title: '艾灸预防法',
-    category: '预防方法',
-    content: '通过艾灸特定穴位激发正气，提高免疫力，达到预防流感的效果。',
-    treatments: [
-      '足三里穴：健脾益胃，强壮保健要穴',
-      '大椎穴：振奋阳气，提高抵抗力',
-      '肺俞穴：补益肺气，增强卫外功能'
-    ],
-    prevention: '每周艾灸2-3次，每个穴位灸10-15分钟，注意避免烫伤'
-  },
-  {
-    id: 8,
-    title: '拔罐疗法',
-    category: '治疗方法',
-    content: '通过负压作用于体表穴位，达到祛风散寒、活血通络的效果，适用于风寒型流感。',
-    treatments: [
-      '背部膀胱经走罐：沿脊柱两侧上下推动罐具',
-      '定罐大椎、风门、肺俞等穴位',
-      '配合刺络拔罐效果更佳'
-    ],
-    prevention: '治疗时间不宜过长，5-10分钟为宜；体质虚弱者慎用'
-  },
-  {
-    id: 9,
-    title: '食疗调理方',
-    category: '康复调理',
-    content: '根据不同证型选择适宜食材，促进康复。',
-    treatments: [
-      '风寒型：葱豉汤（葱白、淡豆豉）加红糖',
-      '风热型：桑菊薄荷饮（桑叶、菊花、薄荷）',
-      '暑湿型：荷叶薏米粥（鲜荷叶、薏苡仁、粳米）',
-      '气虚型：黄芪红枣粥（黄芪、红枣、粳米）'
-    ],
-    prevention: '康复期饮食宜清淡易消化，循序渐进增加营养'
-  },
-  {
-    id: 10,
-    title: '情志调养',
-    category: '预防方法',
-    content: '中医认为"精神内守，病安从来"，保持良好心态有助于预防疾病。',
-    treatments: [
-      '静坐冥想：每日15-20分钟',
-      '音乐疗法：聆听舒缓的宫调音乐',
-      '导引功法：如五禽戏、八段锦'
-    ],
-    prevention: '避免过度紧张焦虑；培养兴趣爱好；保持规律作息'
   }
-
 ];
 
-const Preprocessing = () => {
+const KnowledgeBase = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('全部');
   const [selectedItem, setSelectedItem] = useState(null);
@@ -293,4 +221,4 @@ const Preprocessing = () => {
   );
 };
 
-export default Preprocessing;
+export default KnowledgeBase;
