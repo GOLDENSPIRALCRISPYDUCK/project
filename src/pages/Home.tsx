@@ -63,7 +63,7 @@ const Home = () => {
             <div className="h-[600px] relative z-10 flex items-center justify-center">
                 <div className="text-center text-white">
                     <h1 className="text-7xl font-bold mb-6">岐黄御瘟</h1>
-                    <p className="text-3xl mb-8">一种中医流感辅助诊疗Transformer系统</p>
+                    <p className="text-3xl mb-8">一种基于大语言模型的中医流感辅助诊疗系统</p>
                     <Link
                         to="/preprocessing"
                         className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -82,22 +82,22 @@ const Home = () => {
                             <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                                 <Microscope className="text-blue-600" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-3">智能预处理</h3>
-                            <p className="text-gray-600">自动进行图像增强和优化，提供清晰的诊断基础</p>
+                            <h3 className="text-xl font-semibold mb-3">中医流感知识库</h3>
+                            <p className="text-gray-600">整合中医流感理论与病例数据，提供诊疗知识</p>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-md">
                             <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                                 <Brain className="text-blue-600" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-3">AI辅助诊断</h3>
-                            <p className="text-gray-600">运用深度学习算法，快速识别潜在的眼科疾病</p>
+                            <h3 className="text-xl font-semibold mb-3">预防建议</h3>
+                            <p className="text-gray-600">基于“治未病”理念，提供预防措施和健康指导</p>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-md">
                             <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                                 <Activity className="text-blue-600" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-3">批量处理</h3>
-                            <p className="text-gray-600">支持多张图片同时分析，提高诊断效率</p>
+                            <h3 className="text-xl font-semibold mb-3">AI辅助流感诊断</h3>
+                            <p className="text-gray-600">利用深度学习算法，快速准确分析病情</p>
                         </div>
                     </div>
                 </div>
